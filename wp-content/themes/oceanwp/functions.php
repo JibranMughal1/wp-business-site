@@ -1167,6 +1167,7 @@ new OCEANWP_Theme_Class();
 /**
  * Override the default site logo with the new professional logo.
  */
+add_filter( 'has_custom_logo', '__return_true' );
 add_filter( 'get_custom_logo', function( $html ) {
 	$logo_url = content_url( '/uploads/2025/03/new-site-logo.png' );
 	$home_url = home_url( '/' );
