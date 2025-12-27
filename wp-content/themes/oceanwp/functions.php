@@ -1163,3 +1163,18 @@ if ( ! function_exists( 'owp_fs' ) ) {
 
 new OCEANWP_Theme_Class();
 
+
+/**
+ * Override the default site logo with the new professional logo.
+ */
+add_filter( 'get_custom_logo', function( $html ) {
+	$logo_url = content_url( '/uploads/2025/03/new-site-logo.png' );
+	$home_url = home_url( '/' );
+	$html = sprintf(
+		'<a href="%1$s" class="custom-logo-link" rel="home"><img src="%2$s" class="custom-logo" alt="%3$s" /></a>',
+		esc_url( $home_url ),
+		esc_url( $logo_url ),
+		get_bloginfo( 'name' )
+	);
+	return $html;
+} );
