@@ -1178,3 +1178,26 @@ add_filter( 'get_custom_logo', function( $html ) {
 	);
 	return $html;
 } );
+
+/**
+ * Add logo to the footer.
+ */
+add_action( 'ocean_before_footer_bottom_inner', function() {
+	$logo_url = content_url( '/uploads/2025/03/new-site-logo.png' );
+	?>
+	<div id="footer-logo" style="text-align: center; margin-bottom: 20px;">
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+			<img src="<?php echo esc_url( $logo_url ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" style="max-height: 100px;">
+		</a>
+	</div>
+	<?php
+} );
+
+/**
+ * Set the logo as the site favicon.
+ */
+add_action( 'wp_head', function() {
+	$logo_url = content_url( '/uploads/2025/03/new-site-logo.png' );
+	echo '<link rel="icon" href="' . esc_url( $logo_url ) . '" type="image/x-icon" />';
+	echo '<link rel="shortcut icon" href="' . esc_url( $logo_url ) . '" type="image/x-icon" />';
+} );
