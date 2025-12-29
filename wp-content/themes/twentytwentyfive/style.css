@@ -48,7 +48,16 @@ a {
  * Progressive enhancement to reduce widows and orphans
  * https://github.com/WordPress/gutenberg/issues/55190
  */
-h1, h2, h3, h4, h5, h6, blockquote, caption, figcaption, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+caption,
+figcaption,
+p {
 	text-wrap: pretty;
 }
 
@@ -58,4 +67,103 @@ h1, h2, h3, h4, h5, h6, blockquote, caption, figcaption, p {
 */
 .more-link {
 	display: block;
+}
+
+/* Premium Header Styles */
+header.wp-block-template-part,
+.premium-header {
+	position: sticky !important;
+	top: 0;
+	z-index: 9999;
+	background: rgba(17, 17, 17, 0.75) !important;
+	backdrop-filter: blur(12px) saturate(180%);
+	-webkit-backdrop-filter: blur(12px) saturate(180%);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+header.wp-block-template-part:hover,
+.premium-header:hover {
+	background: rgba(17, 17, 17, 0.85) !important;
+}
+
+/* Site Title Styling */
+header.wp-block-template-part .wp-block-site-title a,
+.premium-header .wp-block-site-title a {
+	color: #ffffff !important;
+	font-weight: 800 !important;
+	letter-spacing: -0.02em;
+	text-decoration: none !important;
+	background: linear-gradient(135deg, #fff 0%, #a5a5a5 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	transition: opacity 0.3s ease;
+}
+
+/* Navigation Item Animations */
+.wp-block-navigation .wp-block-navigation-item {
+	transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.wp-block-navigation .wp-block-navigation-item__content {
+	position: relative !important;
+	color: #ffffff !important;
+	font-weight: 500 !important;
+	letter-spacing: 0.5px;
+	transition: all 0.3s ease !important;
+	padding: 8px 12px !important;
+}
+
+.wp-block-navigation .wp-block-navigation-item__content::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 2px;
+	background: linear-gradient(90deg, #503AA8, #F6CFF4);
+	transition: all 0.3s ease;
+	transform: translateX(-50%);
+}
+
+.wp-block-navigation .wp-block-navigation-item:hover {
+	transform: translateY(-2px);
+}
+
+.wp-block-navigation .wp-block-navigation-item:hover .wp-block-navigation-item__content::after {
+	width: 60%;
+}
+
+.wp-block-navigation .wp-block-navigation-item:hover .wp-block-navigation-item__content {
+	color: #F6CFF4 !important;
+}
+
+/* Premium CTA Style for last menu item */
+.wp-block-navigation .wp-block-navigation-item:last-child {
+	background: linear-gradient(135deg, #503AA8 0%, #3498db 100%) !important;
+	padding: 2px !important;
+	border-radius: 50px;
+	margin-left: 20px !important;
+	box-shadow: 0 4px 15px rgba(80, 58, 168, 0.3);
+}
+
+.wp-block-navigation .wp-block-navigation-item:last-child .wp-block-navigation-item__content {
+	background: #111;
+	border-radius: 48px;
+	padding: 6px 20px !important;
+}
+
+.wp-block-navigation .wp-block-navigation-item:last-child .wp-block-navigation-item__content::after {
+	display: none;
+}
+
+.wp-block-navigation .wp-block-navigation-item:last-child:hover {
+	transform: translateY(-3px) scale(1.02);
+	box-shadow: 0 8px 25px rgba(80, 58, 168, 0.5);
+}
+
+.wp-block-navigation .wp-block-navigation-item:last-child:hover .wp-block-navigation-item__content {
+	background: transparent;
+	color: white !important;
 }
